@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+		
+		<meta charset="utf-8">
+		<title>FumiDron S.A. -Empresa de fumigacion con drones-</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/gh/ethereum/web3.js@1.0.0-beta.35/dist/web3.min.js"></script>
+				
+	</head>  
+	 
+	 <body>
+
+		<script Languaje="javascript" SRC="index_goerli.js">
+		</script>  
+ 
+ <div>FumiDron S.A. --Empresa de fumigacion con drones--</div>
+ <div class="mui-container" id="balanceERC20">
+</div>
+
+<div class="mui-container" id="listaDrones"></div>
+<div class="mui-container" id="separacion"></div>
+<div class="mui-container" id="listaParcelas"></div>
+<div class="mui-container" id="cabecera">
+  <div class="mui-panel">
+  <h3 id="encabezado" valign="middle"  style="color:#34c421">GESTIÓN DE PARCELAS</h2>
+</div>
+	
+	<div class="mui-container" id="Parcelas">
+	<div class="mui-panel">
+	<h2 id="encabezado">Datos de las parcelas</h2>
+   
+	<form id="frmParcela" name="frmParcela" method="post" action="" class="mui-form">
+
+	  <div class="mui-textfield">
+		<input type="text" name="alturaMaxParcela" id="altura_maxima" value="" size="4">
+		<label>Altura Máxima</label>
+		</div>
+		
+		<div class="mui-textfield">
+			<input type="text" name="alturaMinParcela" id="altura_minima" value="" size="4">
+			<label>Altura Minima</label>
+		</div>
+
+		<div class="mui-textfield">
+			<input type="text" name="superficie" id="superficie" value="" size="4">
+			<label>Superficie(m2)</label>
+		</div>
+		
+		<div class="mui-checkbox">
+		<label>	Pesticidas que necesita: </label>
+			<label>
+			  <input name="pesticidaDron" type="checkbox" value="1">A
+			</label>
+			<label>
+			  <input name="pesticidaDron" type="checkbox" value="2">B
+			</label>
+			<label>
+			  <input name="pesticidaDron" type="checkbox" value="3">C
+			</label>
+			<label>
+			  <input name="pesticidaDron" type="checkbox" value="4">D
+			</label>
+			<label>
+			  <input name="pesticidaDron" type="checkbox" value="5">E
+			</label>
+		</div>
+
+		<button class="mui-btn mui-btn--primary mui-btn--raised" onClick={eventoRegistroParcela()}>Crear Parcela</button>
+	</form> 	
+	</div>	
+	
+	
+	<div class="mui-container" id="Acciones">
+	<div class="mui-panel">
+	<h2 id="encabezado">Solicitar Fumigación</h2>
+
+	<form id="frmAccionesAltafumigacion" name="frmAccionesAltafumigacion" class="mui-form">
+	
+		<div class="mui-textfield">
+			<input type="text" name="idDron" id="idDron" size="4">
+			<label>Id Dron</label> 
+		</div>
+
+		<div class="mui-textfield">
+			<input type="text" name="idParcela" id="idParcela" size="4">
+			<label>Id Parcela</label>	
+		</div>
+		
+		<div class="mui-textfield">
+			<input type="text" name="idFerti" id="idFerti" size="4">
+			<label>Id Pesticida</label>	
+		</div>
+		
+		<button type="button" class="mui-btn mui-btn--primary mui-btn--raised" onClick={eventoContratacion()} >Pagar contrato</button>		
+	</form>
+	</div>	
+	
+
+      <div id="console"></div> 
+	  <div id="resultados"> </div>
+	  <div class="mui-container" id="balanceERC20">
+	</div>
+
+	<div class="mui-container" id="listaDrones"></div>
+	<div class="mui-container" id="separacion"></div>
+	<div class="mui-container" id="listaParcelas"></div>
+	<div class="mui-container" id="AltaDron">
+	<div class="mui-panel">
+        <div class="mui-container" id="cabecera">
+            <div class="mui-panel">
+            <h3 id="encabezado" valign="middle"  style="color:#0000FF">OPERATIVA DE DRONES</h2>
+          </div> 
+
+	 <h2>Datos de los drones</h2>
+	  <form id="frmDron" name="frmDron" method="post" action="" class="mui-form">
+		
+		<div class="mui-textfield">
+		  <input type="text" name="alturaMaxDron" id="altura_maxima" value="" size="4">
+		  <label>Altura Máxima</label>
+		  </div>
+		  
+		  <div class="mui-textfield">
+			  <input type="text" name="alturaMinDron" id="altura_minima" value="" size="4">
+			  <label>Altura Mínima</label>
+		  </div>
+		  
+		  <div class="mui-textfield">
+			  <input type="text" name="precio" id="precio" value="" size="4">
+			  <label>Precio</label>
+		  </div>
+		  
+		  <div class="mui-textfield">
+			  <input type="text" name="cargasBateria" id="cargasBateria" size="4" maxlength="" value="">
+			  <label>Duración batería</label>
+		  </div>
+		  
+		  <div class="mui-textfield">
+			<input type="text" name="M2fumigado" id="M2fumigado" value="" size="4"> 		
+			<label>Superficie(m2) fumigación</label>
+		  </div>
+
+		  <div class="mui-checkbox">
+		  <label>	Pesticidas disponibles: </label>
+		  <label>
+		<input name="pesticidaDron" type="checkbox" value="1">
+		A
+	  </label>
+	  <label>
+		<input name="pesticidaDron" type="checkbox" value="2">
+		B
+	  </label>
+	  <label>
+		<input name="pesticidaDron" type="checkbox" value="3">
+		C
+	  </label>
+	  <label>
+		<input name="pesticidaDron" type="checkbox" value="4">
+		D
+	  </label>
+	  <label>
+		<input name="pesticidaDron" type="checkbox" value="5">
+		E
+	  </label>
+	  </div>
+		  <button class="mui-btn mui-btn--primary mui-btn--raised" onClick={eventoRegistroDron()}>Crear Dron</button>
+	  </form>
+	  </div>	
+	  </div>
+	  <div class="mui-container" id="Acciones">
+	  <div class="mui-panel">
+	  <h2 id="encabezado">Consulta y Despliegue</h2>
+	  <form id="frmAcciones" name="frmAcciones" method="post" action="" class="mui-form">
+		  <div class="mui-textfield">
+			<input type="text" name="idDron" id="idDron" value="" size="4"> 
+			<label>Id Dron</label> 
+		  </div>
+		  <div class="mui-textfield">
+			<input type="text" name="idParcela" id="idParcela" value="" size="4">  
+			<label>Id Parcela</label>	
+		  </div>
+		  <div class="mui-textfield">
+			<input type="text" name="idFerti" id="idFerti" value="" size="4">  
+			<label>Id Pesticida</label>	
+		  </div>
+		  <button class="mui-btn mui-btn--primary mui-btn--raised" onClick={eventoCompatibilidad()}>Compatibilidad</button>
+		  <button class="mui-btn mui-btn--primary mui-btn--raised" onClick={eventoDisponibilidad()}>Disponiblidad Dron</button>	
+		 
+		  <div class="mui-textfield">
+			  <label>Resultado de operaciones</label>	
+			  <input type="text" name="idResult" id="idResult" value="" size="5">
+		  </div>  
+	  </form>
+	  </div>	
+		<div id="console"></div>
+		<div id="resultados"> </div>
+
+    </body>
+</html>
+
+

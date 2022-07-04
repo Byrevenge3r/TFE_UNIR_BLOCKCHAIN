@@ -70,16 +70,18 @@ contract FumiDron is IERC721Receiver, Owner {
     }
 
 
-event FumigacionContratada(uint256  idDron, uint256 idParcela, uint256 idPesticida, address to, bool result);
+
 
 
 
 //ALTA FUMIGACION
+    event FumigacionContratada(uint256  idDron, uint256 idParcela, uint256 idPesticida, address to, bool result);
+
     function AltaFumigacion (uint256 idDron, uint256 idParcela, uint256 idPesticida) external returns (bool result) {
         require (DisponibilidadDron(idDron), "El Dron no esta disponible");
         require (compatibilidad(idDron,idParcela), "El dron no es compatible");
         listaFumigacion[idDron].idParcela=idParcela;
-        listaFumigacion[idDron].estado = estadoAlta.Fumigando; 
+        listaFumigacion[idDron].estado = estadoAlta.Completada; 
         listaFumigacion[idDron].idPesticida = idPesticida;   
         emit FumigacionContratada(idDron, idParcela, idPesticida, msg.sender, true);
         return true;
