@@ -18,7 +18,7 @@
 					await window.ethereum.enable();
 					cuentaEmpresa="0xa499a3BfA8A9119C561CC5fB5eb9455a7b4f8cad";
 					instanciaTokenERC20 = await new web3.eth.Contract(ABI_FUMIDRONERC20, "0x9676edC971e0DAF2E382731982dccD764B8311E6"); 	
-					instanciaEmpresa= await new web3.eth.Contract(ABI_FUMIDRON, "0x1e8C398196C106A72D8dF48E008Ff82e44fD31bd");
+					instanciaEmpresa= await new web3.eth.Contract(ABI_FUMIDRON, "0x2a0679BDc549BfE7448e756509102dC9fcD9D179");
 					var accounts = await web3.eth.getAccounts();
 					var accountInterval = setInterval( async function() {
 				    var accounts = await web3.eth.getAccounts();
@@ -133,7 +133,7 @@
 						//document.getElementById('console').innerHTML = document.getElementById('console').innerHTML+"<br>"+result;	
 					}).catch(error => console.log(error));		
 				TotalDrones().then(displayDrones);
-			}
+		}
 	  
 	  
 //DISPONIBILIDAD DRON
@@ -154,17 +154,7 @@
 				);	 
 			}
 	  
-		
-//FUMIGACION
-	  
-		async function Fumigar(idDron,idParcela) {
-							
-			let estimadoGas = await instanciaEmpresa.methods.Fumigacion(idDron,idParcela).estimateGas({gas: 5000000});
-			let result= await instanciaEmpresa.methods.Fumigacion(idDron,idParcela).send({from: cuentaUsuario, gas: parseInt(estimadoGas)});
-			document.getElementById('idResult').value= result.transactionHash;
-			TotalDrones().then(displayDrones);
-		}
-	
+			
 	
 	function GetCheckedVal(tipo) {
 
@@ -471,10 +461,5 @@
 		event.stopPropagation();
 	}
 	
-	function eventoFumigacion() {
 
-		Fumigar(frmAcciones.idDron.value, frmAcciones.idParcela.value);
-		event.preventDefault();
-		event.stopPropagation();
-	}
 			
